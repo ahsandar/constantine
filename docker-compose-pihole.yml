@@ -1,0 +1,60 @@
+version: "2.4"
+
+services:
+  cloudflared:
+    build:
+      context: ./cloudflared
+      dockerfile: ./Dockerfile
+      args:
+        DNS1: ${CLOUDFLARED_DNS1}
+        DNS2: ${CLOUDFLARED_DNS2}
+        PORT: 54054
+    ports:
+    - "54054:54054/tcp"
+    - "54054:54054/udp"
+    networks:
+      network:
+        aliases:
+          - constantine_cloudflared
+
+  pihole:
+    build:
+      context: ./pihole
+      dockerfile: ./Dockerfile
+      args:
+        TZ: ${TZ}
+        WEBPASSWORD: ${WEBPASSWORD}
+        DNS1: ${DNS1}
+        DNS2: ${DNS2}
+    volumes:
+      - "pihole_data:/etc/pihole"
+      - "pihole_dnsmasq_data:/etc/dnsmasq.d"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "8081:80/tcp"
+      - "8443:443/tcp"
+    environment:
+      - DNSMASQ_LISTENING=all
+      - IPv6=false
+    networks:
+      network:
+        aliases:
+          - constantine_pihole
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    cap_add:
+      - NET_ADMIN
+
+networks:
+  network:
+    driver: bridge
+
+volumes:
+  wireguard_data: {}
+  pihole_data: {}
+  pihole_dnsmasq_data: {}
+  cloudflared_data: {}
+
