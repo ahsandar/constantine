@@ -1,0 +1,9 @@
+FROM visibilityspots/cloudflared
+
+ARG DNS1
+ARG DNS2
+ARG PORT 
+
+ENV DNS1=${DNS1}
+ENV DNS2=${DNS2}
+ENV PORT=${PORT}

@@ -1,0 +1,3 @@
+#!/bin/bash
+certbot renew --tls-sni-01-port=18888
+cat /etc/letsencrypt/live/constantine.mooo.com/fullchain.pem /etc/letsencrypt/live/constantine.mooo.com/privkey.pem > /etc/letsencrypt/live/constantine.mooo.com/haproxy.pem
