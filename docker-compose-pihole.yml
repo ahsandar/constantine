@@ -33,8 +33,8 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
-      - "8081:80/tcp"
-      - "8443:443/tcp"
+      - "80:80/tcp"
+      - "443:443/tcp"
     environment:
       - DNSMASQ_LISTENING=all
       - IPv6=false
