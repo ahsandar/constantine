@@ -69,7 +69,11 @@ services:
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
-
+    networks:
+      network:
+        ipv4_address: 10.0.0.4
+        aliases:
+          - constantine_wireguard
 networks:
   network:
     driver: bridge
