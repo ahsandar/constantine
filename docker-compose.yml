@@ -54,12 +54,11 @@ services:
   wireguard:
     build:
       context: ./wireguard
-      dockerfiel: ./Dockerfile
+      dockerfile: ./Dockerfile
       args:
         PUID: 1000
         PGID: 1000
         TZ: ${TZ}
-        SERVERPORT: ${SERVERPORT}
         PEERS: ${PEERS}
         PEERDNS: 10.0.0.3#53 #pi-hole IP Address
     volumes:
