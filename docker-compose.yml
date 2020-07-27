@@ -56,8 +56,8 @@ services:
       context: ./wireguard
       dockerfile: ./Dockerfile
       args:
-        PUID: 1000
-        PGID: 1000
+        PUID: ${PUID}
+        PGID: ${PGID}
         TZ: ${TZ}
         PEERS: ${PEERS}
         PEERDNS: 10.0.0.3#53 #pi-hole IP Address
