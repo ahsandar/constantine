@@ -89,3 +89,17 @@ To look for the active connections can monitor the `wg show`
 
 On your router remember to forward the port you have mapped on your device to the `WireGuard` container. In the project `docker-compose.yml` port mapping is set as `52828:51820` which means `device` port `52828` is mapped to `WireGuard` container port `51820`. So on your router make sure you forward port `52828` to your deivce's IP address to route all incoming traffic on your public IP via the router to the device running `WireGuard`.
 
+# Official Docs
+
+## cloudflared
+
+https://github.com/visibilityspots/dockerfile-cloudflared
+
+## Pi hole
+
+https://hub.docker.com/r/pihole/pihole
+
+
+## WireGuard
+
+https://docs.linuxserver.io/images/docker-wireguard
