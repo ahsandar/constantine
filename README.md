@@ -39,7 +39,7 @@ Use the script `local_resolver_stop.sh`
 
 > `./local_resolver_stop.sh`
 
-If you stop the containers, local resolver will need to be started use the script `local_resolver_start.sh`
+If you stop the containers, local resolver will need to be started to have your device be able to connect to internet use the script `local_resolver_start.sh`
 
 > `./local_resolver_start.sh`
 
@@ -47,7 +47,7 @@ If you stop the containers, local resolver will need to be started use the scrip
 
 ## Build containers
 
-After turning you system resolver make sure you have your variables set.
+After turning off you system resolver make sure you have your variables set before building the containers.
 
 > `docker-compose build`
 
@@ -59,7 +59,7 @@ or  if you want to run in background
 
 > `docker-compose up -d` 
 
-If you want to set it up as a systemd service use the `docker-compose@.service file` place it in `/etc/systemd/system/` and update the `WorkingDirectory`
+If you want to set it up as a systemd service use the `docker-compose@.service` file and place it in `/etc/systemd/system/` and update the `WorkingDirectory`
 
 Then you can start and stop it as such
 
@@ -87,6 +87,5 @@ To look for the active connections can monitor the `wg show`
 
 # Port Forwarding
 
-On your router remember to forward the port you have mapped on your device to the `WireGuard` container. In the docker-compose.yml port mapping is set as 
-`52828:51820` which means device port `52828` is mapped to WireGuard container port `51820` so on your router make sure you forward port `52828` to your deivce's IP address top route all incoming traffic to your public IP via the router to the device running `WireGuard` 
+On your router remember to forward the port you have mapped on your device to the `WireGuard` container. In the project `docker-compose.yml` port mapping is set as `52828:51820` which means `device` port `52828` is mapped to `WireGuard` container port `51820`. So on your router make sure you forward port `52828` to your deivce's IP address to route all incoming traffic on your public IP via the router to the device running `WireGuard`.
 
