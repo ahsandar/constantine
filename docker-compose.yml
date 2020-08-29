@@ -8,10 +8,10 @@ services:
       args:
         DNS1: ${CLOUDFLARED_DNS1}
         DNS2: ${CLOUDFLARED_DNS2}
-        PORT: 54054
+        PORT: 5054
     ports:
-    - "54054:54054/tcp"
-    - "54054:54054/udp"
+    - "5054:5054/tcp"
+    - "5054:5054/udp"
     networks:
       network:
         ipv4_address: 10.0.0.2
@@ -25,7 +25,7 @@ services:
       args:
         TZ: ${TZ}
         WEBPASSWORD: ${WEBPASSWORD}
-        DNS1: 10.0.0.2#53 # cloudflared IP Address
+        DNS1: 10.0.0.2#5054 # cloudflared IP Address
         DNS2: ${DNS2}
     volumes:
       - "pihole_data:/etc/pihole"
